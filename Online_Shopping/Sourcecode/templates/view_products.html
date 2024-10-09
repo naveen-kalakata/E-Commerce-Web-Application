@@ -1,0 +1,15 @@
+{% include "ahead.html" %}
+<div class="flex-container plr-10">
+        {% for product in products: %}
+            {% set category = get_categories_by_category_id(product[1]) %}
+                <div class="card mt-10 ml-50" style="width:20%;height:50%">
+                        <div class="text-center f-130 mt-10">{{product[2]}}</div>
+                        <div class="text-center mt-10">
+                            <img src="{{product[3]}}" style="height:150px;overflow:auto;width:150px">
+                        </div>
+                        <div class="mt-10 f-110">${{product[4]}}</div>
+                        <div class="mt-10 f-110">quantity:{{product[5]}}</div>
+                        <div class="mt-10 f-110" style="height:50px;overflow:auto">{{product[6]}}</div>
+                </div>
+        {% endfor %}
+</div>

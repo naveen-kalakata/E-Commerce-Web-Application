@@ -1,0 +1,47 @@
+{% include "chead.html" %}
+<div class="card mt-10 plr-10">
+    <div class="flex-container">
+        <div class="part-20"></div>
+        <div class="part-30 p-10" >
+            <div class="plr-10 f-110">Categories</div>
+            <form action="view_products_customer">
+                <select name="category_id" id="category_id"  class="my_text_box plr-10 " required >
+                    <option value="Choose category">Choose category</option>
+                    {% for category in categories: %}
+                        <option value="{{category[0]}}">{{category[1]}}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        <div class="part-30 p-10 f-110">
+            <div>Product</div>
+            <input type="text" name="product_name" id="product_name" class="my_text_box p-5" >
+        </div>
+        <div class="part-20"></div>
+    </div>
+    <div id="products">
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+        get_products()
+    $("#category_id").on("change",function(){
+
+        get_products()
+    });
+    $("#product_name").on("keyup",function(){
+
+       get_products()
+    });
+});
+    function get_products(){
+        let category_id=$("#category_id").val()
+        let product_name=$("#product_name").val()
+        let url="get_products?category_id="+category_id+"&product_name="+product_name+""
+        $.get(url,function(data,status){
+            $("#products").html(data)
+        });
+    }
+
+</script>

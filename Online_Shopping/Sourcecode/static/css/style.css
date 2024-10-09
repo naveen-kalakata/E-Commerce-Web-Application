@@ -1,0 +1,347 @@
+*{
+    padding : 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+nav{
+	margin: 0px auto 0;
+	position: relative;
+	width: 590px;
+	height: 50px;
+	background-color: #34495e;
+	border-radius: 8px;
+	font-size: 0;
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 150px;
+}
+a:nth-child(2) {
+	width: 200px;
+}
+a:nth-child(3) {
+	width: 220px;
+}
+a:nth-child(4) {
+	width: 180px;
+}
+a:nth-child(5) {
+	width: 180px;
+}
+a:nth-child(6) {
+	width: 170px;
+}
+a:nth-child(7) {
+	width: 140px;
+}
+a:nth-child(8) {
+	width: 100px;
+}
+
+
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 150px;
+	left: 0px;
+	background-color: #1abc9c;
+}
+nav .start-admin, a:nth-child(2):hover~.animation {
+	width: 200px;
+	left: 150px;
+	background-color: #e74c3c;
+}
+nav .start-customers, a:nth-child(3):hover~.animation {
+	width: 170px;
+	left: 400px;
+	background-color: #3498db;
+}
+.error{
+    color:red;
+    font-size:130%;
+}
+.bg-red {
+    background-color : rgb(255, 194, 179);
+    text-decoration:line-through;
+}
+label{
+    font-size:20px;
+    padding:10px;
+}
+
+.my_text_box{
+    display:block;
+    width:100%;
+    border:none;
+    border-bottom:2px solid #ddd;
+    margin-top:10px;
+    font-size:16px;
+}
+.plr-10{
+    padding-left:10px;
+    padding-right:10px;
+}
+.p-5{
+    padding: 0px 5px;
+}
+.text-center {
+    text-align: center;
+}
+.card{
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #ccc;
+    padding:10px;
+}
+.stb{
+   background-color:rgb(0, 0, 204);
+   margin-top:10px;
+   margin-left:1000px;
+   font-size:18px;
+   border-radius:6%;
+   color:white;
+}
+.fs{
+  font-style: italic;
+}
+.f-200{
+   font-size: 200%;
+   font-weight: bold;
+}
+.f-110{
+   font-size:110%;
+}
+
+.f-130{
+   font-size: 130%;
+   font-weight: bold;
+}
+.mt-10 {
+ margin-top:10px;
+}
+
+.mb-10{
+ margin-bottom:10px;
+}
+.mb-50{
+ margin-bottom:50px;
+}
+
+.mt-100 {
+ margin-top:100px;
+}
+
+.mt-5 {
+ margin-top:5%;
+}
+.mr-20{
+    margin-right:20px;
+}
+.mr-50{
+    margin-right:50px;
+}
+.m-auto{
+    margin:auto;
+}
+.home-img{
+    border-radius:7px;
+    width:80%;
+    display: block;
+    height:90%;
+}
+.admin-img{
+    border-radius:7px;
+    width:100%;
+    display:block;
+    height:90%;
+}
+
+.order-img{
+    border-radius:7px;
+    width:90%;
+    display:block;
+    height:70%;
+}
+.customer-img{
+    border-radius:10px;
+    width:100%;
+    display:block;
+    height:100%;
+}
+
+.a-home-img{
+    border-radius:7px;
+    width:80%;
+    display: block;
+    height:90%;
+}
+.ml-50{
+    margin-left:50px;
+}
+.ml-20{
+    margin-left:20px;
+}
+.ml-10{
+    margin-left:10px;
+}
+
+.ml-80{
+    margin-left:80px;
+}
+.mr-10{
+    margin-right:10px;
+}
+.mt-50{
+    margin-top:50px;
+}
+
+.mt-50{
+    margin-top:50px;
+}
+
+.part-100{
+    width:100%;
+}
+.part-25{
+    width:25%;
+}
+.part-20{
+    width:20%;
+}
+
+.part-40{
+    width:40%;
+}
+.part-60{
+    width:60%;
+}
+table{
+  width:50%;
+  border-collapse: collapse;
+
+}
+table, td, th {
+  border: 1px solid;
+
+}
+th{
+  height: 40px;
+  font-size:20px;
+  background-color: #f2f2f2;
+}
+tr{
+  text-align:center;
+  height:30px;
+  font-size:15px;
+}
+.part-75{
+    width:75%;
+}
+.part-10{
+    width:10%;
+}
+.part-15{
+    width:15%;
+}
+.w-100{
+    width:100%;
+}
+.part-25{
+    width:25%;
+}
+
+.pt-20{
+    padding-top:20px;
+}
+
+.p-10{
+    padding:10px;
+}
+.pr-20{
+    padding-right:20%;
+}
+input{
+    padding:8px;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width:100%;
+}
+.msg{
+    font-size:20px;
+    text-align:center;
+}
+.part-50{
+    width:50%;
+}
+.part-33{
+    width:33.33%;
+}
+.part-25{
+    width:25%;
+}
+
+.part-80{
+    width:80%;
+}
+.part-40{
+    width:40%;
+}
+
+.part1{
+    width:10%;
+}
+.part2{
+    width:80%;
+}
+.part3{
+    width:10%;
+}
+
+.btn{
+    margin:10px 40px;;
+}
+.reg-btn{
+    margin:auto;
+}
+#btn{
+    font-size:15px;
+    background-color:#34495e;
+    color:white;
+    border-radius:5%;
+    width:100%;
+}
+.part-20{
+    width:20%;
+}
+.part-30{
+    width:30%;
+}
+.part-40{
+    width:40%;
+}
+.mt-5{
+    margin-top:5px;
+}
+

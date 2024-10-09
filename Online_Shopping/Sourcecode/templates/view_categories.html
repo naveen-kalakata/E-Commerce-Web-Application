@@ -1,0 +1,23 @@
+{% include "ahead.html" %}
+<div class="flex-container">
+    <div class="part-20"></div>
+    <div class="part-60 text-center mt-10 mb-10 f-130">Categories List</div>
+    <div class="part-20 mt-10">
+        <button><a href="/add_categories" id="btn">Add Categories</a></button>
+    </div>
+</div>
+<table class="m-auto">
+        <thead>
+            <tr>
+                <th>Category id</th>
+                <th>Category Name</th>
+            </tr>
+        </thead>
+        {% for category in categories: %}
+            <tr class="f-110">
+                <td>{{category[0]}}</td>
+                <td>{{category[1]}}</td>
+            </tr>
+        {% endfor %}
+</table>
+

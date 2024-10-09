@@ -1,0 +1,117 @@
+{% include "head.html" %}
+<link rel="stylesheet" href="../static/css/style.css">
+<div class="flex-container">
+    <div class="part1"></div>
+    <div class="part2 card mt-10">
+        <form action="customer_register_action" method="post" id="my_form">
+            <div class="text-center f-200">Customer Registration</div>
+            <div class="flex-container ">
+                <div class="part-50 mt-10 pt-20 plr-10 ">
+                    <label>Name</label>
+                    <input type="text" id="name"  name="name" placeholder="Enter Name" class="my_text_box" required>
+                    <div class="error" id="error_name"></div>
+                </div>
+                <div class="part-50 mt-10 pt-20 plr-10" >
+                    <label>Email</label>
+                    <input type="email" id="email"  name="email" placeholder="Enter Email" class="my_text_box" required>
+                    <div class="error" id="error_email"></div>
+                </div>
+                <div class="part-50 mt-10 pt-20 plr-10 ">
+                    <label>Password</label>
+                    <input type="password" id="password"  name="password" placeholder="Enter Password" class="my_text_box" required>
+                    <div class="error" id="error_password"></div>
+                </div>
+                <div class="part-50 mt-10 pt-20 plr-10">
+                    <label>Phone</label>
+                    <input type="tel" id="phone"  name="phone" placeholder="Enter Phone" class="my_text_box" required>
+                    <div class="error" id="error_phone"></div>
+                </div>
+                &nbsp;
+                <div class="part-50 mt-20 pt-20">
+                    <label>Gender</label>
+                    <input type="radio" id="gender" value="Male" name="gender"  required>Male
+                    &nbsp;
+                    <input type="radio" id="gender1" value="Female" name="gender" required>Female
+                </div>
+                <div class="part-50 mt-10 pt-20 plr-10">
+                    <label>Location</label>
+                    <input type="text" id="location"  name="location" placeholder="Enter Location" class="my_text_box" required>
+                </div>
+                <div class="part-50 mt-10 pt-20 plr-10">
+                    <label>Address</label>
+                    <textarea id="address"   name="address"  placeholder="Enter Address" class="my_text_box" required></textarea>
+                    </div>
+                <div class="part-50 mt-10 pt-20 reg-btn">
+                    <a href="/customer_email_verification">Verity Your Email here before Registration</a>
+                </div>
+                <div class="part-50 mt-10 pt-20 reg-btn">
+                    <input type="submit" value="Register" id="btn">
+                </div>
+                <div class="part-60 mt-10 f-130">
+                    already has account ? <a href="/customer_login">login here</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="part3"></div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#name").on("keyup",function(){
+         name_validate();
+        });
+        $("#email").on("keyup",function(){
+         email_validate();
+        });
+        $("#password").on("keyup",function(){
+         password_validate();
+        });
+        $("#phone").on("keyup",function(){
+         phone_validate();
+        });
+    })
+    function name_validate(){
+        let letters = /^[A-Za-z]+$/;
+        let name=$("#name").val();
+        if(name.length<=3){
+        $("#error_name").text("name length should greater than 3 letters")
+        e.preventDefault()
+        }else if(!name.match(letters)){
+        $("#error_name").text("name contain only alphabets")
+        e.preventDefault()
+        }else{
+            $("#error_name").text("")
+        }
+    }
+    function email_validate(){
+        let mail_format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let email=$("#email").val();
+        if(email.match(mail_format)){
+            $("#error_email").text("")
+        }else{
+            $("#error_email").text("invalid email")
+            e.preventDefault()
+        }
+    }
+    function phone_validate(){
+        var phone_no = /^\d{10}$/;
+        let phone=$("#phone").val();
+        if(!phone.match(phone_no)){
+            $("#error_phone").text("10 digits only")
+            e.preventDefault()
+        }else{
+            $("#error_phone").text("")
+        }
+    }
+    function password_validate(){
+        let password_format =/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+        let password=$("#password").val();
+        if(password.match(password_format)){
+            $("#error_password").text("")
+        }else{
+            $("#error_password").text("min 8 letter password, with at least a symbol, upper and lower case letters and a number")
+            e.preventDefault()
+        }
+    }
+</script>
+

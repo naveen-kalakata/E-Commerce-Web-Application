@@ -1,0 +1,106 @@
+ {% if session['role']=='admin' %}
+    {% include "ahead.html" %}
+ {% else %}
+    {% include "chead.html" %}
+ {% endif %}
+ <div class="card mt-10">
+     <div class="flex-container">
+            {% for customer_order in customer_orders: %}
+                {% set customer = get_customer_by_customer_id(customer_order[1]) %}
+                {% set customer_order_items = get_customer_order_items_by_customer_order_id(customer_order[0]) %}
+                {% set totalPrice = namespace(value=0) %}
+                    <div class="part-25">
+                         <div class="f-110">Order Number</div>
+                         <div class="mt-10">{{customer_order[0]}}</div>
+                    </div>
+                    <div class="part-25 ">
+                        <div class="f-110">Customer</div>
+                        <div class="mt-10 f-110">{{customer[1]}} , {{customer[4]}}</div>
+                    </div>
+                    <div class="part-25">
+                        <div class="f-110">Date&Time</div>
+                        <div class="mt-10 f-110">{{customer_order[2]}}</div>
+                    </div>
+                    <div class="part-25">
+                        <div class="f-110">Status</div>
+                        <div class="mt-10 f-110">{{customer_order[3]}}</div>
+                    </div>
+        <table class="mt-10" style="width:100%">
+            <thead>
+            <tr>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                    {% if customer_order[3] == 'cart' %}
+                    <th>Remove</th>
+                    {% endif %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for customer_order_item in customer_order_items: %}
+                {% set product = get_product_by_product_id(customer_order_item[1]) %}
+                {% set category = get_categories_by_category_id(product[1])%}
+            {% if customer_order_item[4] =='available' %}
+                {% set totalPrice.value = totalPrice.value+int(customer_order_item[3])*int(product[4]) %}
+            {% endif %}
+                <tr  {% if customer_order_item[4] =='Not Available' %} class="f-110 bg-red"  {% else %} class="f-110" {% endif %}>
+                    <td><img src="../static/products/{{product[3]}}" height="150px;"></td>
+                    <td>{{product[2]}}</td>
+                    <td>{{category[1]}}</td>
+                    <td>{{customer_order_item[3]}}</td>
+                    <td>${{product[4]}}</td>
+                    <td>${{(int(customer_order_item[3])*int(product[4]))}}</td>
+                    {% if customer_order[3] == 'cart' %}
+                        <td>
+                             <a href="remove_from_cart?customer_order_item_id={{customer_order_item[0]}}&customer_order_id={{customer_order_item[2]}}">Remove</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total Amount={{totalPrice.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+         {% if session['role']=='customer' %}
+              {% if customer_order[3] =='cart' %}
+                 <form action="order_now">
+                     <input type="hidden" name="customer_order_id" value="{{customer_order[0]}}">
+                     <input type="hidden" name="totalPrice" value="{{totalPrice.value}}">
+                     <input type="submit" value="Order now" class="stb">
+                 </form>
+              {% endif %}
+              {% if customer_order[3] =='ordered' %}
+                <form action="set_status">
+                    <input type="hidden" name="customer_order_id" value="{{customer_order[0]}}">
+                    <input type="hidden" name="status" value="cancelled">
+                    <input type="submit" value="Cancel" class="stb">
+                </form>
+              {% endif %}
+              {% if customer_order[3] =='dispatched' %}
+                <form action="set_status">
+                    <input type="hidden" name="customer_order_id" value="{{customer_order[0]}}">
+                    <input type="hidden" name="status" value="delivered">
+                    <input type="submit" value="mark as received" class="stb mr-10">
+                </form>
+              {% endif %}
+         {% elif session['role']=='admin' %}
+            {% if customer_order[3] =='ordered' %}
+                <form action="set_status">
+                    <input type="hidden" name="customer_order_id" value="{{customer_order[0]}}">
+                    <input type="hidden" name="status" value="dispatched">
+                    <input type="submit" value="dispatch" class="stb">
+                </form>
+            {% endif %}
+         {% endif %}
+            {% endfor %}
+    </div>
+ </div>

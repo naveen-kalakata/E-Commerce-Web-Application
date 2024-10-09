@@ -1,0 +1,46 @@
+{% include "ahead.html" %}
+<div class="flex-container plr-10">
+    <div class="part-60 mt-100 ml-50 mr-50">
+        <img src="https://creativelogistics.com/wp-content/uploads/2019/12/AdobeStock_175128190-640x401.jpeg">
+    </div>
+    <div class="mt-10">
+    <div class="card">
+        <form action="add_product1" method="post" enctype="multipart/form-data">
+            <div class="text-center"><h2>Add Product</h2></div>
+            <div class="mt-10">
+                <label>Category</label>
+                <select name="category_id" id="category_id"  class="my_text_box" required >
+                    <option value="Choose category">Choose category</option>
+                    {% for category in categories: %}
+                        <option value="{{category[0]}}">{{category[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mt-10">
+                <label>Product Name</label>
+                <input type="text" id="product_name" name="product_name" placeholder="Enter Product Name" class="my_text_box" required>
+            </div>
+            &nbsp;
+            <div>
+                <label>Image</label>
+                <input type="file" id="image" name="image" required>
+            </div>
+            <div class="mt-10">
+                <label>Price</label>
+                <input type="text" id="price" name="price" placeholder="Enter Price" class="my_text_box" required>
+            </div>
+            <div class="mt-10">
+                <label>Quantity</label>
+                <input type="number" id="quantity" name="quantity" placeholder="Enter Quantity" class="my_text_box" required>
+            </div>
+            <div class="mt-10">
+                <label>Description</label>
+                <input type="text" id="description" name="description" placeholder="Enter Description" class="my_text_box" required>
+            </div>
+            <div class="btn mt-10">
+                <input type="submit" value="Add Product" id="btn">
+            </div>
+        </form>
+    </div>
+    </div>
+</div>

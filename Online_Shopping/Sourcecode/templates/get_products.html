@@ -1,0 +1,28 @@
+<div class="flex-container">
+    {% for product in products: %}
+      {% set category = get_categories_by_category_id(product[1]) %}
+    <div class="part-25">
+        <div class="card mr-10">
+                <div class="text-center f-130 mt-10">{{product[2]}}</div>
+                <div class="text-center mt-10">
+                    <img src="{{product[3]}}" height="150px" width="50%">
+                </div>
+                <div class="mt-10 f-110">${{product[4]}}</div>
+                <div class="mt-10 f-110">quantity={{product[5]}}</div>
+                <div class="mt-10 f-110" style="height:50px;overflow:auto">{{product[6]}}</div>
+                <form action="add_cart">
+                    <div>
+                        <input type="hidden" name="product_id" value="{{product[0]}}">
+                    </div>
+                    <div class="mt-10" >
+                        <input type="number" name="quantity" id="quantity" class="my-text-box w-100 text-center f-110" placeholder="quantity"  min="1" max="{{product[5]}}">
+
+                    </div>
+                    <div class="btn mt-10">
+                        <input type="submit" value="AddCart" id="btn">
+                    </div>
+                </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>

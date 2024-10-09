@@ -1,0 +1,26 @@
+{% include "head.html" %}
+<link rel="stylesheet" href="../static/css/style.css">
+<div class="flex-container">
+    <div class="part-60 mt-10 ml-50 mr-50">
+        <img class="admin-img" src="https://img.freepik.com/premium-photo/shopping-cart-shopping-bags-product-box-put-laptop-which-is-online-shop-store-internet-digital-market-concept-marketing-digital-marketing-communication-3d-rendering_42098-145.jpg">
+    </div>
+    <div class="part-25 mt-100 ml-20">
+        <div class="card">
+            <form action="admin_login" method="post">
+                <div class="text-center f-200">Admin Login</div>
+                <div class="mt-10 pt-20 p-10">
+                    <label>Username</label>
+                    <input type="text" id="username" name="username" class="my_text_box" placeholder="Enter Username" required>
+                </div>
+                <div class="mt-10 pt-20">
+                    <label>Password</label>
+                    <input type="password" id="password" name="password" class="my_text_box" placeholder="Enter Password" required>
+                </div>
+                <div class="mt-10 pt-20 ">
+                    <input type="submit" value="Login" id="btn">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

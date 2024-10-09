@@ -1,0 +1,33 @@
+{% include "chead.html" %}
+<div class="flex-container">
+    <div class="part-25 mt-50 ml-50">
+        <div class="card">
+            <form action="pay_amount" >
+            <input type="hidden" name="customer_order_id" value="{{customer_order_id}}">
+            <input type="text" name="totalPrice" value="Total Amount={{totalPrice}}">
+            <div class="mt-10">
+                <label>Card Number</label>
+                <input type="number" name="card_number" id="card_number" placeholder="Enter Card Number" class="my_text_box">
+            </div>
+            <div class="mt-10">
+                <label>Card Holder Name</label>
+                <input type="text" name="card_name" id="card_name" placeholder="Enter Card Name" class="my_text_box">
+            </div>
+            <div class="mt-10">
+                <label>CVV</label>
+                <input type="number" name="cvv" id="cvv" placeholder="Enter CVV" class="my_text_box">
+            </div>
+            <div class="mt-10">
+                <label>Expiry Date</label>
+                <input type="text" name="expiry_date" id="expiry_date" placeholder="Enter Expiry Date" class="my_text_box">
+            </div>
+            <div class="mt-10">
+                <input type="submit" value="Pay Amount" id="btn">
+            </div>
+        </form>
+        </div>
+    </div>
+    <div class="part-60 mt-10 ml-50 mr-50">
+        <img class="order-img" src="https://i.pinimg.com/1200x/46/b7/58/46b758397f582fd148bc81c8847ccde0.jpg">
+    </div>
+</div>

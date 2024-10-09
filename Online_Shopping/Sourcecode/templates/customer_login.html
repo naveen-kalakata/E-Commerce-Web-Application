@@ -1,0 +1,60 @@
+{% include "head.html" %}
+<link rel="stylesheet" href="../static/css/style.css">
+<div class="flex-container">
+    <div class="part-60 mt-10 ml-50 mr-50">
+        <img class="customer-img" src="https://mag-habitat.fr/wp-content/uploads/2014/08/tablette-numerique.jpg">
+    </div>
+    <div class="part-25 mt-100 ml-20">
+        <div class="card">
+            <form action="customer_login_action" id="my_form"  method="post">
+                <div class="text-center f-200">Customer Login</div>
+                <div class="mt-10 pt-20 ">
+                    <label>Email</label>
+                    <input type="email" id="email" name="email"  placeholder="Enter Email" class="my_text_box">
+                    <div class="error" id="error_email"></div>
+                </div>
+                <div class=" mt-10 pt-20 ">
+                    <label>Password</label>
+                    <input type="password" id="password" name="password"  placeholder="Enter Password" class="my_text_box">
+                    <div class="error" id="error_password"></div>
+                </div>
+                <div class="mt-10 pt-20">
+                    <input type="submit" value="Login" id="btn">
+                </div>
+                 <div class="mt-10 f-130">
+                     new user ?<a href="/customer_registration">click here to register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#email").on("keyup",function(){
+         email_validate();
+        });
+        $("#password").on("keyup",function(){
+         password_validate();
+        });
+    })
+    function email_validate(){
+        let mail_format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        let email=$("#email").val();
+        if(email.match(mail_format)){
+            $("#error_email").text("")
+        }else{
+            $("#error_email").text("invalid email")
+            e.preventDefault()
+        }
+    }
+    function password_validate(){
+        let password_format =/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{7,}$/
+        let password=$("#password").val();
+        if(password.match(password_format)){
+            $("#error_password").text("")
+        }else{
+            $("#error_password").text("min 8 letter password, with at least a symbol, upper and lower case letters and a number")
+            e.preventDefault()
+        }
+    }
+</script>
